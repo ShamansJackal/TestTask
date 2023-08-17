@@ -16,6 +16,6 @@ jobs:
          token: ${{ secrets.TELEGRAM_TOKEN }}
          message: |
           ${{ github.actor }} created commit:
-          Commit message: ${{ github.event.html_url }}
+          Commit message: ${{ github.event.comment.html_url }}
           
           Repository: ${{ github.repository }}    
