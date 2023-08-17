@@ -13,7 +13,7 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
          to: ${{ secrets.TELEGRAM_TO }}
-         if: ${{ github.issue.assignee.login != 'ShamansJackal' }}
+         if: ${{ github.issue.assignee.id == 74203576 }}
          token: ${{ secrets.TELEGRAM_TOKEN }}
          message: |
           ${{ github.actor }} Created comment:
