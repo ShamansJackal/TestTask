@@ -9,9 +9,13 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1 - Echo out a GitHub Actions Secret to the logs
-        run: |
-          echo "The GitHub Action Secret will be masked:  "
-          echo ${{ secrets.TELEGRAM_TO }}
-          echo "Trick to echo GitHub Actions Secret:  "
-          echo ${{secrets.TELEGRAM_TOKEN}} | sed 's/./& /g'       
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+         to: ${{ secrets.TELEGRAM_TO }}
+         token: ${{ secrets.TELEGRAM_TOKEN }}
+         message: |
+          ${{ github.actor }} created commit:
+          Commit message: ${{ toJson(github) }}
+          
+          Repository: ${{ github.repository }}    
