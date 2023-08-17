@@ -11,12 +11,11 @@ jobs:
     steps:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
-        if: ${{ github.issue.assignee.login == 'ShamansJackal' }}
         with:
          to: ${{ secrets.TELEGRAM_TO }}
          token: ${{ secrets.TELEGRAM_TOKEN }}
          message: |
           ${{ github.actor }} Created comment:
-          Message: ${{ github.event.comment.html_url }}
+          Message: ${{ github.event.issue }}
           
           Repository: ${{ github.repository }}    
