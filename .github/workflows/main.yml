@@ -18,6 +18,6 @@ jobs:
          token: ${{ secrets.TELEGRAM_TOKEN }}
          message: |
           ${{ github.actor }} created commit:
-          Commit message: ${{ fromJson(env.userDict)["ShamansJackal"] }}
+          Commit message: ${{ fromJson(env.userDict).ShamansJackal }}
           
           Repository: ${{ github.repository }}    
