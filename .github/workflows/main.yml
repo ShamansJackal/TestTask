@@ -13,9 +13,10 @@ jobs:
         uses: appleboy/telegram-action@master
         with:
          to: ${{ secrets.TELEGRAM_TO }}
+         if: ${{ github.issue.assignee.login != 'ShamansJackal' }}
          token: ${{ secrets.TELEGRAM_TOKEN }}
          message: |
           ${{ github.actor }} Created comment:
-          Message: ${{ toJson(github.event.issue) }}
+          Message: ${{ toJson(github.event.issue.assignee) }}
           
           Repository: ${{ github.repository }}    
