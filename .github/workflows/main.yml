@@ -14,10 +14,10 @@ jobs:
         env:
           userDict: "{\"ShamansJackal\":210583358}"
         with:
-         to: ${{ fromJson(env.userDict)[github.issue.assignee.login] }}
+         to: ${{ secrets.TELEGRAM_TO }}
          token: ${{ secrets.TELEGRAM_TOKEN }}
          message: |
           ${{ github.actor }} created commit:
-          Commit message: ${{ toJson(github.event) }}
+          Commit message: ${{ fromJson(env.userDict)[github.issue.assignee.login] }}
           
           Repository: ${{ github.repository }}    
