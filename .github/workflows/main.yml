@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
-        if: github.issue.assignee.login == "ShamansJackal"
+        if: ${{ github.issue.assignee.login == "ShamansJackal" }}
         with:
          to: ${{ secrets.TELEGRAM_TO }}
          token: ${{ secrets.TELEGRAM_TOKEN }}
