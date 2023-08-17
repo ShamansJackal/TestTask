@@ -17,6 +17,6 @@ jobs:
          token: ${{ secrets.TELEGRAM_TOKEN }}
          message: |
           ${{ github.actor }} Created comment:
-          Message: ${{ toJson(github.event.issue.assignee) }}
+          Message: ${{ github.event.comment.html_url }}
           
           Repository: ${{ github.repository }}    
