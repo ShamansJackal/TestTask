@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo "${{ github }}"
+        run: echo "${{ toJson(github) }}"
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
