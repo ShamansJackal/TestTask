@@ -25,7 +25,7 @@ jobs:
           
           Repository: ${{ github.repository }}    
   pr_opened:
-      if: ${{ github.action == 'opened' }}
+      if: ${{ github.event.action == 'opened' }}
       runs-on: ubuntu-latest
       steps:    
       - name: Test
@@ -36,7 +36,7 @@ jobs:
          to: ${{ secrets.TELEGRAM_TO }}
          token: ${{ secrets.TELEGRAM_TOKEN }}
          message: |
-          ${{ github.actor }} Created comment:
-          Message: ${{ github.event.comment.html_url }}
+          ${{ github.actor }} Created Pull Request:
+          Message: ${{ github.event.pull_request._links.html.href }}
           In repository: ${{ github.repository }}   
           
