@@ -2,13 +2,17 @@ name: Some workflow
 
 on:
   issue_comment:
-    types: [created]
+    types: [created, edited]
+  pull_request:
+    types: [opened]
 
 jobs:
   comment:
     if: always()
     runs-on: ubuntu-latest
     steps:
+      - name: Test
+        run: echo "${{ github }}"
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
@@ -20,3 +24,19 @@ jobs:
           Message: ${{ github.event.comment.html_url }}
           
           Repository: ${{ github.repository }}    
+  pr_opened:
+      if: ${{ github.action == 'opened' }}
+      runs-on: ubuntu-latest
+      steps:    
+      - name: Test
+        run: echo "${{ github }}"
+      - name: Send telegram message on new comment in ShamansJackal Pull Requests
+        uses: appleboy/telegram-action@master
+        with:
+         to: ${{ secrets.TELEGRAM_TO }}
+         token: ${{ secrets.TELEGRAM_TOKEN }}
+         message: |
+          ${{ github.actor }} Created comment:
+          Message: ${{ github.event.comment.html_url }}
+          In repository: ${{ github.repository }}   
+          
